@@ -8,4 +8,8 @@ j5.nodeLed = require('node-led');
 j5.nodePixel = require('node-pixel');
 j5.oledJS = require('oled-js');
 
+if(global.p5) {
+  global.p5.j5 = j5;
+}
+
 module.exports = j5;
