@@ -1,0 +1,40 @@
+{
+  "name": "p5.j5",
+  "version": "1.0.0",
+  "description": "johnny-five library for p5.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monteslu/p5.j5.git"
+  },
+  "keywords": [
+    "johnny-five",
+    "robotics",
+    "arduino",
+    "web",
+    "usb",
+    "bluetooth"
+  ],
+  "author": "Luis Montes, Elgin Skye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monteslu/p5.j5/issues"
+  },
+  "homepage": "https://github.com/monteslu/p5.j5#readme",
+  "dependencies": {
+    "ble-io": "^0.1.0",
+    "ble-serial": "^0.5.0",
+    "firmata": "^1.0.0",
+    "johnny-five": "^1.0.0",
+    "node-led": "^0.3.1",
+    "node-pixel": "^0.10.1",
+    "oled-js": "^4.0.5",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webusb-serial": "^0.3.1"
+  }
+}
