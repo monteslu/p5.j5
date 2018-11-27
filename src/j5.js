@@ -39,25 +39,27 @@ j5.handleElementInit = function(btn) {
 }
 
 
-
-
 if(global.p5) {
-  global.p5.j5 = j5;
-  p5.prototype.five = j5;
   const p5 = global.p5;
+  p5.j5 = j5;
+  p5.five = j5;
   p5.prototype.registerPreloadMethod('loadBoard', p5.prototype);
   p5.prototype.loadBoard = function (options = {}, callback, onerror) {
-
+    let clickElement;
     if(options.element) {
-      const clickElement = document.getElementById("authBtn");
-      j5.handleElementInit(clickElement);
+      clickElement = document.getElementById("authBtn");
+    } else {
+      clickElement = document.createElement('button');
+      clickElement.innerText = 'Authorize USB Device';
+      document.body.appendChild(clickElement);
     }
+    j5.handleElementInit(clickElement);
 
     // Create an object which will clone data from async function and return it.
     // We will need to update that object below, not overwrite/reassign it.
     // It is crucial for the preload() to keep the original pointer/reference.
     // Declaring variables with const assures they won't be reassigned by mistake.
-    const ret = {huh: 1};
+    const ret = {};
     const self = this;
 
     console.log('loadBoard starting', Date.now(), ret, options, callback, onerror);
