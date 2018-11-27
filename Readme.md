@@ -48,6 +48,8 @@ You'll need the [webusb firmata sketch](https://github.com/monteslu/webusb-seria
 
 Johnny-Five related libraries bundled in:
 
-p5.j5.[nodeLed](https://github.com/louiemontes/node-led)
-p5.j5.[nodePixel](https://github.com/ajfisher/node-pixel)
-p5.j5.[oledJS](https://github.com/noopkat/oled-js)
+* p5.j5.[nodeLed](https://github.com/louiemontes/node-led)
+
+* p5.j5.[nodePixel](https://github.com/ajfisher/node-pixel)
+
+* p5.j5.[oledJS](https://github.com/noopkat/oled-js)
