@@ -45,6 +45,7 @@ if(global.p5) {
   p5.five = j5;
   p5.prototype.registerPreloadMethod('loadBoard', p5.prototype);
   p5.prototype.loadBoard = function (options = {}, callback, onerror) {
+    console.log('loading board', options);
     let clickElement;
     if(options.element) {
       clickElement = document.getElementById("authBtn");
