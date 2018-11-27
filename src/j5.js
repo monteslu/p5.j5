@@ -71,6 +71,7 @@ if(global.p5) {
           self._decrementPreload();
         }
         j5.events.emit('boardReady');
+        j5.board = board;
 
       });
 
