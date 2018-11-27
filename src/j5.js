@@ -45,7 +45,12 @@ if(global.p5) {
   global.p5.j5 = j5;
   const p5 = global.p5;
   p5.prototype.registerPreloadMethod('loadBoard', p5.prototype);
-  p5.prototype.loadBoard = function (options, callback, onerror) {
+  p5.prototype.loadBoard = function (options = {}, callback, onerror) {
+
+    if(options.element) {
+      const clickElement = document.getElementById("authBtn");
+      j5.handleElementInit(clickElement);
+    }
 
     // Create an object which will clone data from async function and return it.
     // We will need to update that object below, not overwrite/reassign it.
