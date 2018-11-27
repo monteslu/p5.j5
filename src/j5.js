@@ -42,7 +42,7 @@ j5.handleElementInit = function(btn) {
 if(global.p5) {
   const p5 = global.p5;
   p5.j5 = j5;
-  p5.five = j5;
+  global.five = j5;
   p5.prototype.registerPreloadMethod('loadBoard', p5.prototype);
   p5.prototype.loadBoard = function (options = {}, callback, onerror) {
     console.log('loading board', options);
