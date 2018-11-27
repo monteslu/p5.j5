@@ -1,6 +1,6 @@
 # p5.j5
 
-Johnny-Five for p5.js
+The full [Johnny-Five](http://johnny-five.io/) nodebots library for p5.js!
 
 ## getting started
 
@@ -37,8 +37,17 @@ function draw() {
 
 ```
 
+
 ## supported hardware
 
 Currently p5.j5 supports [webusb capable boards](https://github.com/webusb/arduino#compatible-hardware)
 
 You'll need the [webusb firmata sketch](https://github.com/monteslu/webusb-serial/tree/master/example) loaded onto your board.
+
+## Bonus features
+
+Johnny-Five related libraries bundled in:
+
+p5.j5.[nodeLed](https://github.com/louiemontes/node-led)
+p5.j5.[nodePixel](https://github.com/ajfisher/node-pixel)
+p5.j5.[oledJS](https://github.com/noopkat/oled-js)
