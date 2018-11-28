@@ -1,6 +1,6 @@
 {
   "name": "p5.j5",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "johnny-five library for p5.js",
   "main": "dist/p5.j5.min.js",
   "scripts": {
