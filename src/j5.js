@@ -52,6 +52,7 @@ if(global.p5) {
     } else {
       clickElement = document.createElement('button');
       clickElement.innerText = 'Authorize USB Device';
+      clickElement.style.margin = '25px';
       document.body.appendChild(clickElement);
     }
     j5.handleElementInit(clickElement);
