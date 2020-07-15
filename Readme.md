@@ -55,6 +55,13 @@ from this directory run:
 * `npm run demos`
 * point browser to [http://localhost:5000/demos](http://localhost:5000/demos)
 
+## running on the p5 web editor
+
+Just plug in a microcontroller with firmata on it and go here:
+
+[https://editor.p5js.org/monteslu/sketches/QbhToqDil](https://editor.p5js.org/monteslu/sketches/QbhToqDil)
+
+
 ## Bonus features
 
 Johnny-Five related libraries bundled in:
