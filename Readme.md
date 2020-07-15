@@ -1,5 +1,7 @@
 # p5.j5
 
+![p5.j5](p5j5_logo.png)
+
 The full [Johnny-Five](http://johnny-five.io/) nodebots library for [p5.js](https://p5js.org/)!
 
 Works directly in a web page via webSerial or webUSB. No servers required.
