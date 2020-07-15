@@ -61,7 +61,7 @@ Johnny-Five related libraries bundled in:
 
 * p5.j5.[nodePixel](https://github.com/ajfisher/node-pixel)
 
-* p5.j5.[oledJS](https://github.com/noopkat/oled-js)
+* p5.j5.[oledJS](https://github.com/noopkat/oled-js) ( including p5.j5.[oledJS.oledFont5x7](https://github.com/noopkat/oled-font-5x7) )
 
 ## TODO
 
