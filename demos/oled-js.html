@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <script src="/dist/p5.j5.min.js"></script>
+    <script src="/demos/scripts/floyd-steinberg.js"></script>
+  </head>
+<body>
+  <div>
+    This example syncs the video from your webcam to an oled screen.  Click the video to have it sync.<br>
+    <br>
+  </div>
+  <script>
+
+    // oled screen details:
+    const height = 64;
+    const width = 128;
+    const address = 0x3C;
+    
+    let strip, cnv, rgb = 'rgb(0,0,255)', capture, ditheredData;
+
+    function preload() {
+      loadBoard();
+    }
+
+    function setup() { 
+      capture = createCapture(VIDEO);
+      capture.hide();
+      console.log('capture', capture);
+      p5.j5.events.on('boardReady', () => {
+        const opts = {
+          width,
+          height, 
+          address
+        };
+
+        const oled = new p5.j5.oledJS(p5.j5.board, p5.j5, opts);
+        oled.fillRect(0, 0, width, height, 0);
+        oled.clearDisplay();
+
+        // display text
+        oled.setCursor(1, 1);
+        oled.writeString(p5.j5.oledJS.oledFont5x7, 1, 'Hello, World!', 1, true, 2);
+
+        cnv.mouseClicked(() => {
+          if(ditheredData) {
+            console.log({ditheredData}, ditheredData.data.length / 4);
+            const pixels = [];
+            let bytes = [];
+
+            for (let i = 0; i < (ditheredData.data.length / 4); i++) {
+              pixels.push(ditheredData.data[i * 4] ? 1 : 0);
+              
+            }
+            bytes = Uint8Array.from(pixels);
+            console.log({pixels, bytes});
+            oled.drawBitmap(bytes);
+          }
+        });
+      });
+
+      cnv = createCanvas(width, height);
+      cnv.canvas.height = height;
+      cnv.canvas.width = width;
+
+    }
+
+    function draw() { 
+      //p5 doesn't always deal in raw pixel sizes so I'm being explicit in the drawing here:
+      cnv.drawingContext.drawImage(capture.elt, 0, 0, capture.width, capture.height, 0, 0, width/2, height/2);
+      
+      imgData = cnv.drawingContext.getImageData(0, 0, width, height);
+      floyd_steinberg(imgData);
+      ditheredData = imgData;
+      cnv.drawingContext.putImageData(imgData, 0, 0);
+    }
+
+  </script>
+</body>
+</html>

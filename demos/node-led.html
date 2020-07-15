@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <script src="/dist/p5.j5.min.js"></script>
+  </head>
+<body>
+  <div>
+    This writes text to an adafruit 14-segment display using node-led<br>
+    <br>
+  </div>
+  <script>
+    
+    function preload() {
+      loadBoard();
+    }
+
+    function setup() { 
+      p5.j5.events.on('boardReady', () => {
+        console.log('setting up', p5.j5.board);
+        var opts = {
+          address: 0x77
+        };
+      
+        var display = new p5.j5.nodeLed.AlphaNum4(p5.j5.board, opts);
+        display.clearDisplay();
+        display.writeText("Node");
+      });
+
+    }
+
+  </script>
+</body>
+</html>

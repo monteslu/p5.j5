@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <script src="/dist/p5.j5.min.js"></script>
+  </head>
+<body>
+  <div>
+    This example syncs the canvas a strip of neopixels. You'll need custom firmata from node-pixel <a href="https://github.com/ajfisher/node-pixel" target="_blank">here</a><br>
+    <br>
+    After connecting, click the canvas to change the neopixel colors
+    <br><br>
+  </div>
+  <script>
+    
+    let strip, cnv, rgb = 'rgb(0,0,255)';
+
+    function preload() {
+      loadBoard();
+    }
+
+    function setup() { 
+      p5.j5.events.on('boardReady', () => {
+        console.log('setting up', p5.j5.board);
+        strip = new p5.j5.nodePixel.Strip({
+            board: p5.j5.board,
+            controller: "FIRMATA",
+            strips: [ {pin: 6, length: 32}, ], // this is preferred form for definition
+            gamma: 0.9, // set to a gamma that works nicely for WS2812,
+            skip_firmware_check: true
+        });
+
+        strip.on("ready", function() {
+            // do stuff with the strip here.
+            strip.clear();
+            strip.color('#0000FF');
+            strip.show();
+        });
+      });
+
+      cnv = createCanvas(400, 400);
+      cnv.mouseClicked(() => {
+        rgb = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`;
+        strip.color(rgb);
+        strip.show();
+      })
+    }
+
+    function draw() { 
+      background(rgb);
+    }
+
+  </script>
+</body>
+</html>

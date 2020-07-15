@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <script src="/dist/p5.j5.min.js"></script>
+  </head>
+<body>
+  <div>
+    This example simply connects to a microcontroller and blinks pin 13.
+  </div>
+  <script>
+    
+    function preload() {
+      loadBoard();
+    }
+
+    function setup() { 
+      const led = new five.Led(13);
+      led.blink(500);
+    } 
+
+  </script>
+</body>
+</html>

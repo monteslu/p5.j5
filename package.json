@@ -1,11 +1,12 @@
 {
   "name": "p5.j5",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "johnny-five library for p5.js",
   "main": "dist/p5.j5.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack && BUILD_MODE=production webpack"
+    "build": "webpack && BUILD_MODE=production webpack",
+    "demos": "serve ./"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
     "arduino",
     "web",
     "usb",
+    "serial",
     "bluetooth"
   ],
   "author": "Luis Montes, Elgin Skye",
@@ -26,12 +28,15 @@
   },
   "homepage": "https://github.com/monteslu/p5.j5#readme",
   "dependencies": {
+    "avrgirl-arduino": "^4.2.3",
     "browser-process-hrtime": "^1.0.0",
-    "firmata": "^1.0.0",
-    "johnny-five": "^1.0.0",
+    "firmata-io": "^2.2.0",
+    "johnny-five": "^2.0.0",
     "node-led": "^0.3.1",
-    "node-pixel": "^0.10.1",
-    "oled-js": "^4.0.5",
+    "node-pixel": "^0.10.2",
+    "oled-font-5x7": "^1.0.3",
+    "oled-js": "^5.1.2",
+    "serve": "^11.3.2",
     "webpack": "^4.26.0",
     "webpack-cli": "^3.1.2",
     "webusb-serial": "^2.0.1"

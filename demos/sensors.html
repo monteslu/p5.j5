@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <script src="/dist/p5.j5.min.js"></script>
+  </head>
+<body>
+  <div>
+    This example shows the output of two sensors (A0 & A1).
+  </div>
+  <script>
+    
+    let sensorVal0, sensorVal1;
+
+    function preload() {
+      loadBoard();
+    }
+
+    function setup() { 
+      const sensor0 = new five.Sensor('A0');
+      const sensor1 = new five.Sensor('A1');
+      sensor0.on('change', () => {
+        sensorVal0 = sensor0.scaleTo(0, 400);
+      });
+      sensor1.on('change', () => {
+        sensorVal1 = sensor1.scaleTo(0, 400);
+      });
+      createCanvas(400, 400);
+    }
+
+    function draw() { 
+      background('blue');
+      rect(sensorVal0 - 5, sensorVal1 - 5, 10, 10);
+    }
+
+  </script>
+</body>
+</html>
