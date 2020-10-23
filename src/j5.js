@@ -7,7 +7,7 @@ j5.nodeLed = require('node-led');
 j5.nodePixel = require('node-pixel');
 j5.oledJS = require('oled-js');
 j5.oledJS.oledFont5x7 = require('oled-font-5x7');
-// j5.serial = require('avrgirl-arduino/lib/browser-serialport');
+j5.tharp = require('tharp');
 j5.serial = require('./browser-serialport');
 
 const { EventEmitter } = require('events');

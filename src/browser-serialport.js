@@ -1,4 +1,3 @@
-// TODO: switch out this browser shim for mitt: https://github.com/developit/mitt
 const { EventEmitter } = require('events');
 
 class SerialPort extends EventEmitter {
@@ -12,7 +11,7 @@ class SerialPort extends EventEmitter {
     this.port = null;
     this.writer = null;
     this.reader = null;
-    this.baudrate = this.options.baudRate;
+    this.baudRate = this.options.baudRate;
     this.requestOptions = this.options.requestOptions || {};
 
     if (this.options.autoOpen) this.open();
@@ -29,24 +28,25 @@ class SerialPort extends EventEmitter {
       .then(serialPort => {
         this.port = serialPort;
         if (this.isOpen) return;
-        return this.port.open({ baudrate: this.baudrate || 57600 });
+        return this.port.open({ baudRate: this.baudRate || 57600 });
       })
+      .then(() => this.writer = this.port.writable.getWriter())
+      .then(() => this.reader = this.port.readable.getReader())
       .then(async () => {
-        this.reader = this.port.readable.getReader();
-        this.writer = this.port.writable.getWriter();
+        this.emit('open');
         this.isOpen = true;
-        
-        const read = async () => {
-          const {value, done} = await this.reader.read();
-          this.emit('data', Buffer.from(value));
-          process.nextTick(read);
-        };
-
-        read();
-        
-
-        this.emit('open', this);
         callback(null);
+        while (this.port.readable.locked) {
+          try {
+            const { value, done } = await this.reader.read();
+            if (done) {
+              break;
+            }
+            this.emit('data', Buffer.from(value));
+          } catch (e) {
+            console.error(e);
+          }
+        }
       })
       .catch(error => {callback(error)});
   }
@@ -64,9 +64,21 @@ class SerialPort extends EventEmitter {
     callback && callback(null);
   }
 
-  async set(props, callback) {
+  async set(props = {}, callback) {
     try {
-      await this.port.setSignals(props);
+      const signals = {};
+      if (Object.prototype.hasOwnProperty.call(props, 'dtr')) {
+        signals.dataTerminalReady = props.dtr;
+      }
+      if (Object.prototype.hasOwnProperty.call(props, 'rts')) {
+        signals.requestToSend = props.rts;
+      }
+      if (Object.prototype.hasOwnProperty.call(props, 'brk')) {
+        signals.break = props.brk;
+      }
+      if (Object.keys(signals).length > 0) {
+        await this.port.setSignals(signals);
+      }
     } catch (error) {
       if (callback) return callback(error);
       throw error;
