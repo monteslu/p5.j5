@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/monteslu/p5.j5#readme",
   "dependencies": {
-    "avrgirl-arduino": "^4.3.0",
+    "avrgirl-arduino": "^5.0.1",
     "browser-process-hrtime": "^1.0.0",
     "firmata-io": "^2.2.0",
     "johnny-five": "^2.0.0",
