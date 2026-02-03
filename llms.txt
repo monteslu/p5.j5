@@ -1,0 +1,30 @@
+# p5.j5
+
+> Johnny-Five for Processing p5.js
+
+p5.j5 brings the full Johnny-Five nodebots library to p5.js, enabling hardware interaction directly in web pages via WebSerial or WebUSB. No servers required.
+
+## What it does
+- Integrates Johnny-Five robotics/hardware library with p5.js creative coding
+- Works directly in browsers using WebSerial or WebUSB APIs
+- Supports any Arduino with Firmata sketch
+- Enables sensor reading, motor control, and hardware interaction in p5.js sketches
+
+## Quick Start
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+<script src="https://unpkg.com/p5.j5@1.1.0/dist/p5.j5.min.js"></script>
+```
+
+```javascript
+function preload() { loadBoard(); }
+function setup() { 
+  const sensor = new five.Sensor('A0');
+  sensor.on('change', () => console.log(sensor.value));
+}
+```
+
+## Links
+- Repository: https://github.com/monteslu/p5.j5
+- Johnny-Five: http://johnny-five.io/
+- p5.js: https://p5js.org/
