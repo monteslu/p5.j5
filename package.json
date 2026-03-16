@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/monteslu/p5.j5#readme",
   "dependencies": {
-    "avrgirl-arduino": "^4.3.0",
+    "avrgirl-arduino": "^5.0.1",
     "browser-process-hrtime": "^1.0.0",
     "firmata-io": "^2.2.0",
     "johnny-five": "^2.0.0",
@@ -38,8 +38,8 @@
     "oled-js": "^5.1.2",
     "serve": "^11.3.2",
     "tharp": "^3.0.0",
-    "webpack": "^4.26.0",
-    "webpack-cli": "^3.1.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webusb-serial": "^2.0.1"
   }
 }
